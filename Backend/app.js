@@ -36,7 +36,7 @@ async function fetchRandomQuote() {
 
 const app = express();
 
-app.get('https://sky-backend.vercel.app/', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
         const randomFact = await fetchRandomQuote();
         res.setHeader('Content-Type', 'application/json');
