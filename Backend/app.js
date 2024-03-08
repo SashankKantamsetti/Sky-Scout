@@ -12,7 +12,7 @@ const app = express();
 app.use(cors(corsConfig));
 app.options("", cors(corsConfig))
 
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srv://Sashank:TovH1z4y7fVtJMV1@weather.i9eog8d.mongodb.net/?retryWrites=true&w=majority&appName=Weather";
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
