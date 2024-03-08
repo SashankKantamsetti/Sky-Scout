@@ -3,6 +3,14 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
 
+const corsConfig = {
+    origin: "*",
+    credential: "true",
+    methods: ["GET", "PUT", "POST", "DELETE"]
+}
+
+app.use(cors(corsConfig));
+
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, {
     serverApi: {
@@ -58,8 +66,6 @@ app.get('*', async (req, res) => {
         console.log("OOps")
     }
 })
-
-app.use(cors());
 
 const PORT = process.env.PORT || 3000
 
