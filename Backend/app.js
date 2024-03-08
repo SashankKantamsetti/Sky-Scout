@@ -1,8 +1,9 @@
+require("dotenv").config()
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
 
-const uri = "mongodb+srv://Sashank:TovH1z4y7fVtJMV1@weather.i9eog8d.mongodb.net/?retryWrites=true&w=majority&appName=Weather";
+const uri = `${process.env.MONGO_URI}`;
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -50,9 +51,34 @@ app.get('/', async (req, res) => {
 });
 
 app.use(cors());
-app.listen(3000, () => {
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
     console.log("Server is running on port 3000");
 });
+
+
+/*async function insertData() {
+    try {
+        const collection = client.db("Weather").collection("Facts");
+
+        const multipleInsertResult = await collection.insertMany([]);
+
+        if (multipleInsertResult.acknowledged) {
+            console.log('Inserted document ID:', multipleInsertResult.insertedIds);
+        } else {
+            console.log('Failed to insert document.');
+        }
+    }
+    catch (error) {
+        console.error("Error Inserting Data: ", error);
+    }
+    finally {
+        await client.close();
+    }
+}
+insertData().catch(console.error);*/
 
 
 /*async function insertData() {
