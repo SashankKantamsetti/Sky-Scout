@@ -2,7 +2,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
 
-const uri = "mongodb+srv://Sashank:9K7olqq6OL7ktDLp@weather.i9eog8d.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Sashank:TovH1z4y7fVtJMV1@weather.i9eog8d.mongodb.net/?retryWrites=true&w=majority&appName=Weather";
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -10,17 +10,14 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-
 async function run() {
     try {
         await client.connect();
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } catch (err) {
-        console.error("The error:", err);
+    } finally {
     }
 }
-
 run().catch(console.dir);
 
 async function fetchRandomQuote() {
@@ -53,11 +50,11 @@ app.get('/', async (req, res) => {
 });
 
 app.use(cors());
-/*app.listen(3000, () => {
+app.listen(3000, () => {
     console.log("Server is running on port 3000");
-});*/
+});
 
-module.exports = app()
+//module.exports = app()
 
 
 /*async function insertData() {
