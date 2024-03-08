@@ -10,6 +10,7 @@ const corsConfig = {
 }
 
 app.use(cors(corsConfig));
+app.options("", cors(corsConfig))
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, {
