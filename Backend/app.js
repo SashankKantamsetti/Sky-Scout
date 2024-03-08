@@ -58,6 +58,7 @@ app.listen(PORT, () => {
     console.log("Server is running on port 3000");
 });
 
+module.export = app
 
 /*async function insertData() {
     try {
