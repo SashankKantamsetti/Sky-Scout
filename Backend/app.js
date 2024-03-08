@@ -8,7 +8,7 @@ const corsConfig = {
     credential: "true",
     methods: ["GET", "PUT", "POST", "DELETE"]
 }
-
+const app = express();
 app.use(cors(corsConfig));
 app.options("", cors(corsConfig))
 
@@ -42,8 +42,6 @@ async function fetchRandomQuote() {
         throw err;
     }
 }
-
-const app = express();
 
 app.get('/', async (req, res) => {
     try {
