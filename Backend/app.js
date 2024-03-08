@@ -50,6 +50,15 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.get('*', async (req, res) => {
+    try {
+        res.send("Heyaa")
+    }
+    catch (err) {
+        console.log("OOps")
+    }
+})
+
 app.use(cors());
 
 const PORT = process.env.PORT || 3000
